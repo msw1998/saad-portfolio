@@ -7,15 +7,10 @@ import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 
 export const projects = [
-  {
-    title: "Wawatmos",
-    url: "https://r3f-wawatmos-final.vercel.app/",
-    image: "projects/wawatmos.jpg",
-    description: "Recreating the Atmos Awwwards website with React Three Fiber",
-  },
+  
   {
     title: "Portfolio Website",
-    url: "https://www.youtube.com/watch?v=YkHqpqJgLKw",
+    url: "https://saadwasif.netlify.app/",
     image: "projects/saad.jpg",
     description: "Developed Personal Portfolio website in r3f",
   },
@@ -26,16 +21,22 @@ export const projects = [
     description: "AI based Audio Transcriber app for transcribing doctors and patient convo",
   },
   {
+    title: "Electrastim Linx",
+    url: "https://apps.apple.com/pl/app/electrastim-linx/id6448428493",
+    image: "projects/electrastim.png",
+    description: "Recreating the Atmos Awwwards website with React Three Fiber",
+  },
+  {
     title: "Neural Meta Media",
     url: "https://test.neuralmetamedia.org",
     image: "projects/neuralmeta.jpg",
     description: "3D portfolio website based on ThreeJS",
   },
   {
-    title: "Clareco Clinic",
+    title: "Persium Pod",
     url: "",
-    image: "projects/loader.jpg",
-    description: "Chat Assitant to answer patient queries",
+    image: "projects/persium.png",
+    description: "Indoor monitoring pod for clinics to monitor air quality and occupancy",
   },
 ];
 
