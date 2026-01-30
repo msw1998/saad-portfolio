@@ -45,7 +45,7 @@ function App() {
       });
     }}>
       <color attach="background" args={["#e6e7ff"]} />
-      <ScrollControls pages={4} damping={0.1}>
+      <ScrollControls pages={5} damping={0.1}>
         
         <ScrollManager section={section} onSectionChange={setSection}/>
         <Scroll>
