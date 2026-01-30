@@ -228,6 +228,7 @@ const workHistory = [
     role: "AI.SEE Automation Engineer",
     date: "Jul 2025 - Present",
     color: "#6366f1",
+    logo: "logos/elunic.png",
     description:
       "Engineering cross-platform process automations across Asana, Jira, and HubSpot CRM. Developed custom AI Agents to optimize team workflows and reduce manual overhead.",
   },
@@ -237,6 +238,7 @@ const workHistory = [
     role: "Technical Team Lead",
     date: "Jan 2023 - Present",
     color: "#8b5cf6",
+    logo: "logos/NMM.png",
     description:
       "Spearheading design and development of innovative digital platforms. Leading AI-driven agents, chatbots, and ML algorithm development for client automation.",
   },
@@ -246,6 +248,7 @@ const workHistory = [
     role: "Technical Advisor",
     date: "Feb 2024 - Jan 2025",
     color: "#3b82f6",
+    logo: "logos/popcurb.png",
     description:
       "Guided hardware and software development for smart parking solutions in Paris & New York. Introduced agile best practices, reducing dev cycle time by 20%.",
   },
@@ -255,6 +258,7 @@ const workHistory = [
     role: "Freelance IoT / Software Developer",
     date: "2020 - Present",
     color: "#1dbf73",
+    logo: "logos/fiverr.png",
     description:
       "Delivered 110+ successful projects across IoT, mobile apps, AI chatbots, and automation. Collaborated with international clients including Salesforce and Popcurb.",
   },
@@ -264,6 +268,7 @@ const workHistory = [
     role: "Chief Technology Officer",
     date: "Dec 2021 - Dec 2022",
     color: "#ef4444",
+    logo: "logos/upheaval.png",
     description:
       "Designed AI-enabled grocery picking solution reducing fulfillment time by 30%. Built product mapping engine for 4,000+ items. Led 3D virtual shopping platform development.",
   },
@@ -273,12 +278,37 @@ const workHistory = [
     role: "Research Assistant",
     date: "Nov 2020 - Nov 2021",
     color: "#f59e0b",
+    logo: "logos/ncra.png",
     description:
       "Designed STEM Robot for teaching. Developed IoT attendance system and ventilator firmware. Collaborated with Auvitronics for industrial automation.",
   },
 ];
 
-const CARD_WIDTH = 220;
+const CompanyLogo = ({ job }) => {
+  const [imgError, setImgError] = useState(false);
+
+  if (!job.logo || imgError) {
+    return (
+      <div
+        className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 text-white text-xs font-bold"
+        style={{ backgroundColor: job.color }}
+      >
+        {job.company.charAt(0)}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={job.logo}
+      alt={job.company}
+      className="w-8 h-8 rounded-md object-contain flex-shrink-0 bg-white"
+      onError={() => setImgError(true)}
+    />
+  );
+};
+
+const CARD_WIDTH = 300;
 const CARD_GAP = 32;
 
 const WorkHistorySection = () => {
@@ -356,10 +386,15 @@ const WorkHistorySection = () => {
                   transition={{ duration: 0.3 }}
                   onClick={() => setCurrent(index)}
                 >
-                  <p className="text-xs font-semibold text-gray-400">
-                    {job.date}
-                  </p>
-                  <h3 className="text-sm font-bold mt-1">{job.company}</h3>
+                  <div className="flex items-center gap-2">
+                    <CompanyLogo job={job} />
+                    <div>
+                      <h3 className="text-sm font-bold">{job.company}</h3>
+                      <p className="text-xs font-semibold text-gray-400">
+                        {job.date}
+                      </p>
+                    </div>
+                  </div>
                   <p
                     className="text-xs font-semibold mt-0.5"
                     style={{ color: job.color }}
