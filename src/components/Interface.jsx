@@ -10,7 +10,7 @@ const Section = (props)=>{
     return(
         <motion.section className={`
         h-screen w-screen p-8 max-w-screen-2xl mx-auto
-        flex flex-col items-start 
+        flex flex-col items-start
         ${mobileTop ? "justify-start md:justify-center" : "justify-center"}
         `}
         initial={{ opacity: 0, y: 100 }}
@@ -22,7 +22,7 @@ const Section = (props)=>{
             delay:0.5
           }
         }}
-        
+
         >
             {children}
         </motion.section>
@@ -42,20 +42,32 @@ export const Interface = (props)=>{
     );
 }
 
+const CredlyBadge = ({ image, url }) => {
+  return (
+    <a href={url} target="_blank" rel="noopener noreferrer" className="inline-block">
+      <img
+        src={image}
+        alt="Certification Badge"
+        className="w-[120px] h-[120px] object-contain hover:scale-110 transition-transform cursor-pointer"
+      />
+    </a>
+  );
+};
+
 const AboutSection = (props)=>{
     const {setSection} = props;
 
     return(
-        <Section mobileTop> 
+        <Section mobileTop>
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight md:leading-snug mt-16 md:mt-0">
           Hi, I'm
           <br />
-          
+
           <span className="bg-white px-1 italic mt-auto ">Saad Wasif</span>
         </h1>
-        
-    
-            
+
+
+
                 <motion.p className="text-lg text-gray-600 mt-4 max-w-md"
                 initial ={{opacity:0, x:50}}
                 whileInView={{opacity:1, x:0, transition:{duration:1, delay:1.5}}}
@@ -64,6 +76,16 @@ const AboutSection = (props)=>{
                     IoT systems, AI-powered applications, and immersive digital platforms.
                     I lead cross-functional teams and turn ideas into scalable products.
                 </motion.p>
+            <motion.div
+              className="mt-4"
+              initial={{opacity:0, y:20}}
+              whileInView={{opacity:1, y:0, transition:{duration:1, delay:1.8}}}
+            >
+              <CredlyBadge image="credly-project-management.png" url="https://www.credly.com/badges/f0755d98-a4da-4181-9bad-ed2dfe18dbbe/public_url" />
+              <CredlyBadge image="credly-python.png" url="https://www.credly.com/badges/0fe1cacb-eceb-4f78-8546-d9260659b9db/public_url" />
+
+              
+            </motion.div>
             <motion.button
             onClick={() => setSection(4)}
             className={`
@@ -73,7 +95,7 @@ const AboutSection = (props)=>{
             >
               Contact Me
             </motion.button>
-            
+
         </Section>
     );
 }
@@ -451,7 +473,7 @@ const ContactSection = () =>{
       <div className="mt-8 p-8 rounded-md bg-white bg-opacity-50 w-96 h-screen max-w-full">
         <form>
           <label for="name " className="font-medium text-gray-900 block mb-1">Name</label>
-          <input type="text" name="name" id="name" 
+          <input type="text" name="name" id="name"
            className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"/>
 
           <label for="email" className="font-medium text-gray-900 block mb-1 mt-8">Email</label>
